@@ -1,0 +1,85 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+}
+
+.font-serif-brand {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Anchor offset so sections don't hide under the fixed header */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+/* Mobile nav dropdown */
+#navLinks {
+  transition: transform .3s ease, opacity .3s ease;
+}
+@media (max-width: 767px) {
+  #navLinks {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: #fbf8f2;
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid #e4ddc9;
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  #navLinks.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Scroll fade-in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Portfolio gallery hover overlay */
+.gallery a {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+.gallery a img {
+  transition: transform .5s ease;
+}
+.gallery a:hover img {
+  transform: scale(1.08);
+}
+.gallery a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(22, 79, 66, 0.55) 100%);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.gallery a:hover::after {
+  opacity: 1;
+}
+
+/* Lightbox */
+#lightbox.active {
+  display: flex;
+}
